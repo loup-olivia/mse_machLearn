@@ -4,3 +4,7 @@ PW_06/ex2-logreg-mnist/mnist_test.csv
 PW_06/ex2-logreg-mnist/mnist_train.csv
 #pw-07
 PW_07/ex1-digit-classification/mnist.pkl.gz
+#pw-08
+PW_08/dataset_1.pkl
+PW_08/dataset_2.pkl
+PW_08/ex1-3-clustering-stud.ipynb
