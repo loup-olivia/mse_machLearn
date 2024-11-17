@@ -87,7 +87,8 @@ The resutl give :
 
 With the result on F1-score and accuracy, the model give a good result.
 The main challenge is the number of hyperparameters and the number of good values. It could take time to find the good ones because there were severall values of hyperparameters seems corrects before.\
-The most good result are with the REM classes and the worst with the NREM classes.
+The most good result are with the REM classes and the worst with the NREM classes.\
+In this case, the random forest is better because the score of the test set is better than classification tree.
   
 ### Q2.11: How is this importance calculated?
 they are computed as the mean and standard deviation of accumulation of the impurity decrease within each tree.
