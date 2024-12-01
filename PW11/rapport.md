@@ -4,11 +4,19 @@
 - Loup Olivia
 
 ## 1. Learning algorithm to train the neural networks
-*What is the learning algorithm being used to train the neural networks?
-What are the parameters (arguments) being used by that algorithm?
-What cost function is being used?
-Please, answer the equation(s) and describe (e.g., please include your code for
-this part) how did you create the training, validation and test datasets*.
+*What is the learning algorithm being used to train the neural networks?*
+The learning algorithm used is this code is SGD (stochastic gradient descent).
+*What are the parameters (arguments) being used by that algorithm?*
+In this code we used the optimizer RMSprop. We also have diffrent parameters like :
+- Batch-size = 128
+- n_epoch = 20
+- Learning_rate = 0.001
+- Hidden neuron = 300
+*What cost function is being used?*
+The cost function (also referred to as the loss function) being used in your code is categorical crossentropy. The categorical crossentropy loss compares the predicted probability distribution with the true one-hot encoded label and computes the cross-entropy loss, which penalizes the model more if its predicted probability for the correct class is low.
+`model.compile(loss='categorical_crossentropy', optimizer=RMSprop(), metrics=['accuracy'])`
+
+### 1.1 
 ## 2. CNN & MPL
 *For each experiment except the last one (shallow network learning from raw data,
 shallow network learning from features and CNN):*
