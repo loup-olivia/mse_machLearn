@@ -83,6 +83,8 @@ The starting parameters are the following :
 - Hidden neurons : 300
 - Optimizer : RMSprop
 
+The model is a simple MLP (feed-forward network) with a hidden layer layer and an output layer using the softmax activation function. For the input we have a vector size of 1568 and the number ouf outpu is equal to the number of features.
+
 The result of the first run shows an accuracy on the validation set of 0.9743000268936157.
 
 ![imag](MLP_HOG.png)
@@ -96,24 +98,18 @@ For the following test we reduce the number of Epoch and we add a dropout to the
 
 ![imag](MLP_HOG_E20_DO.png)
 
+The accuracy is very close to the last test. To finish we juste augment the number of hidden neurons. (1000)
 
-## 2. CNN & MPL
-*For each experiment except the last one (shallow network learning from raw data,
-shallow network learning from features and CNN):*
-   1. *select a neural network topology and describe the inputs, indicate how many
-are they, and how many outputs.*
-   2. *Compute the number of weights of each model (e.g., how many weights
-between the input and the hidden layer, how many weights between each
-pair of layers, biases, etc..) and explain how you get to the total number of
-weights.*
-   3. *Test every notebook for at least three different meaningful cases (e.g., for the
-MLP exploiting raw data, test different models varying the number of hidden
-neurons, for the feature-based model, test pix_p_cell 4 and 7, and number of
-orientations or number of hidden neurons, for the CNN, try different number
-of neurons in the feed-forward part) describe the model and present the
-performance of the system (e.g., plot of the evolution of the error, final
-evaluation scores and confusion matrices). Comment the differences in
-results. Are there particular digits that are frequently confused?*
+![imag](MLP_HOG_E20_DO_HN1000.png)
+
+
+![imag](MLP_HOG_E20_DO_HN1000_CM.png)
+
+We can see that we have almost the same result as the MLP_Raw. The final accuracy on the test Set is :0.9837999939918518. The confusion matrix show the same caracteristics as the last one. 
+The calculation is carried out in exactly the same way as for the raw inputs with 1568 inputs instead of 784. The result is given by the following calculation: 
+1568 × 1000 + 1000 + 1000 × 10 + 10 = 1'579'010 parameters.
+
+
 ## 3. Shallow ones VS deep neural network
 *Do the deep neural networks have much more “capacity” (i.e., do they have more
 weights?) than the shallow ones? explain with one example.*
