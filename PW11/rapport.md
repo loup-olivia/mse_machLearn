@@ -39,11 +39,11 @@ Then we just augment the number of "n_epoch" to 20 and we had a slightly better 
 
 To continue the tests, we modify the number of hidden neurons to 1000.
 
-![imag](MLP_Raw_N20HN1000.png)
+![imag](MLP_Raw_E20HN1000.png)
 
 We also try to add a dropout layer of 0.5.
 
-![imag](MLP_Raw_N20HN1000DO.png)
+![imag](MLP_Raw_E20HN1000DO.png)
 
 
 The number of weights in this model can be calculated as follows: 
@@ -59,14 +59,14 @@ The total number of parameters in the network is therefore 785,000 + 1000 × 10 
 
 To finish this first notebook we try to augment the number of epoch to 50.
 
-![imag](MLP_Raw_N50HN1000DO.png)
+![imag](MLP_Raw_E50HN1000DO.png)
 
 The final result with the test set is :
 
 - Test score: 0.07585226744413376
 - Test accuracy: 0.984499990940094
 
-![imag](MLP_Raw_N50HN1000DO_CM.png)
+![imag](MLP_Raw_E50HN1000DO_CM.png)
 
 The diagonal is visible and reflects the good performance of the model, which had no trouble finding the right digits.  There are a few errors, but never more than 10. The biggest confusion seems to be between “9” and “4” + “3” and “5”, without appearing high.
 
