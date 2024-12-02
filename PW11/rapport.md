@@ -39,11 +39,11 @@ Then we just augment the number of "n_epoch" to 20 and we had a slightly better 
 
 To continue the tests, we modify the number of hidden neurons to 1000.
 
-![imag](MLP_Raw_N20HN1000.png)
+![imag](MLP_Raw_E20HN1000.png)
 
 We also try to add a dropout layer of 0.5.
 
-![imag](MLP_Raw_N20HN1000DO.png)
+![imag](MLP_Raw_E20HN1000DO.png)
 
 
 The number of weights in this model can be calculated as follows: 
@@ -59,18 +59,18 @@ The total number of parameters in the network is therefore 785,000 + 1000 × 10 
 
 To finish this first notebook we try to augment the number of epoch to 50.
 
-![imag](MLP_Raw_N50HN1000DO.png)
+![imag](MLP_Raw_E50HN1000DO.png)
 
 The final result with the test set is :
 
 - Test score: 0.07585226744413376
 - Test accuracy: 0.984499990940094
 
-![imag](MLP_Raw_N50HN1000DO_CM.png)
+![imag](MLP_Raw_E50HN1000DO_CM.png)
 
 The diagonal is visible and reflects the good performance of the model, which had no trouble finding the right digits.  There are a few errors, but never more than 10. The biggest confusion seems to be between “9” and “4” + “3” and “5”, without appearing high.
 
-### 2.1 MLP_HOG
+### 2.2 MLP_HOG
 
 Like the previous notebook, the dataset used is MNIST (digits between 0 and 9). However, this time the HOG feature method is applied to recognize image features rather than raw inputs (28x28) directly. 
 The same sets and their distribution are similar to Exercise 1.
@@ -82,6 +82,8 @@ The starting parameters are the following :
 - Batch size : 128
 - Hidden neurons : 300
 - Optimizer : RMSprop
+
+The model is a simple MLP (feed-forward network) with a hidden layer layer and an output layer using the softmax activation function. For the input we have a vector size of 1568 and the number ouf outpu is equal to the number of features.
 
 The result of the first run shows an accuracy on the validation set of 0.9743000268936157.
 
@@ -96,24 +98,21 @@ For the following test we reduce the number of Epoch and we add a dropout to the
 
 ![imag](MLP_HOG_E20_DO.png)
 
+The accuracy is very close to the last test. To finish we juste augment the number of hidden neurons. (1000)
 
-## 2. CNN & MPL
-*For each experiment except the last one (shallow network learning from raw data,
-shallow network learning from features and CNN):*
-   1. *select a neural network topology and describe the inputs, indicate how many
-are they, and how many outputs.*
-   2. *Compute the number of weights of each model (e.g., how many weights
-between the input and the hidden layer, how many weights between each
-pair of layers, biases, etc..) and explain how you get to the total number of
-weights.*
-   3. *Test every notebook for at least three different meaningful cases (e.g., for the
-MLP exploiting raw data, test different models varying the number of hidden
-neurons, for the feature-based model, test pix_p_cell 4 and 7, and number of
-orientations or number of hidden neurons, for the CNN, try different number
-of neurons in the feed-forward part) describe the model and present the
-performance of the system (e.g., plot of the evolution of the error, final
-evaluation scores and confusion matrices). Comment the differences in
-results. Are there particular digits that are frequently confused?*
+![imag](MLP_HOG_E20_DO_HN1000.png)
+
+
+![imag](MLP_HOG_E20_DO_HN1000_CM.png)
+
+We can see that we have almost the same result as the MLP_Raw. The final accuracy on the test Set is :0.9837999939918518. The confusion matrix show the same caracteristics as the last one. 
+The calculation is carried out in exactly the same way as for the raw inputs with 1568 inputs instead of 784. The result is given by the following calculation: 
+1568 × 1000 + 1000 + 1000 × 10 + 10 = 1'579'010 parameters.
+
+### 2.3 CNN
+
+
+
 ## 3. Shallow ones VS deep neural network
 *Do the deep neural networks have much more “capacity” (i.e., do they have more
 weights?) than the shallow ones? explain with one example.*
