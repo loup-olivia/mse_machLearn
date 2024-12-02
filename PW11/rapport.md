@@ -109,8 +109,41 @@ We can see that we have almost the same result as the MLP_Raw. The final accurac
 The calculation is carried out in exactly the same way as for the raw inputs with 1568 inputs instead of 784. The result is given by the following calculation: 
 1568 × 1000 + 1000 + 1000 × 10 + 10 = 1'579'010 parameters.
 
-### 2.3 CNN
+We also tried to variate the parameter Pix_p_cell to 7 to see the diffrences.
+The result was worse than the last config. we obtain the following reslut:
 
+- Validation accuracy: 0.9689000248908997
+- Test accuracy: 0.9725000262260437
+
+The test accuracy is 1% less thant the last with 4 Pix_p_Cell.
+
+### 2.3 CNN
+Here, we will describe the CNN notebook. the notebooks supplied included an initial configuration of hyperparameters hyperparameters for training on the MNIST dataset, which we used as a starting point.  The details and performance of this basic configuration are as follows:
+
+- Epoch : 5
+- Batch size : 128
+- Learning rate : 0.001
+- Optimizer : RMSprop
+
+The model consists of three convolutional layers with max pooling, followed by a flatten layer and two dense layers. The last dense layer uses a softmax activation function for multiclass classification (0 to 9 for MNIST). The input is a shape tensor (w, h, 1), which means that these are grayscale images images with a certain height and width. In our case, it's 28x28. As always, the output is the ten digits features.
+
+The initial test set accuracy is equal to 98.6%
+We test a lot of variation and the best we found is the next one. We modify the filter of "l1" and "l2" to 32 and we augment the core size to 7x7 for thos two lignes. We also augment the number of epoch to 15. The final result is 99% for the validation accuracy and 98.97% for the test set accuracy.
+
+![imag](CNN_E15_3277.png)
+
+![imag](CNN_E15_3277_CM.png)
+
+We have found that this system works relatively well. However, we can observe slight deviations in the following recognitions. In a minority of cases, 4 and 8 are confused with 9. The 3 with 5 and 2 with 7.
+To calculate the number of weights, we need to take into account the weights in the weights in Conv2D layers (filters and biases) and weights in dense layers (including including bias). This can be calculated by adding the product of the dimensions of the weights of each layer and adding the number of biases for each layer (see theory). 
+
+- Layer l1 : 32 × (7 × 7 + 1) = 1600
+- Layer l2 : 32 × (7 × 7 × 32 + 1) = 50208
+- Layer l3 : 16 × (3 × 3 × 32 + 1) = 4624
+- Layer l4 : 144 × 25 + 25 = 3625
+- Layer l5 : 25 × 10 + 10 = 260
+
+The sum is equal to 60317.
 
 
 ## 3. Shallow ones VS deep neural network
