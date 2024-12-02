@@ -70,7 +70,7 @@ The final result with the test set is :
 
 The diagonal is visible and reflects the good performance of the model, which had no trouble finding the right digits.  There are a few errors, but never more than 10. The biggest confusion seems to be between “9” and “4” + “3” and “5”, without appearing high.
 
-### 2.1 MLP_HOG
+### 2.2 MLP_HOG
 
 Like the previous notebook, the dataset used is MNIST (digits between 0 and 9). However, this time the HOG feature method is applied to recognize image features rather than raw inputs (28x28) directly. 
 The same sets and their distribution are similar to Exercise 1.
@@ -108,6 +108,9 @@ The accuracy is very close to the last test. To finish we juste augment the numb
 We can see that we have almost the same result as the MLP_Raw. The final accuracy on the test Set is :0.9837999939918518. The confusion matrix show the same caracteristics as the last one. 
 The calculation is carried out in exactly the same way as for the raw inputs with 1568 inputs instead of 784. The result is given by the following calculation: 
 1568 × 1000 + 1000 + 1000 × 10 + 10 = 1'579'010 parameters.
+
+### 2.3 CNN
+
 
 
 ## 3. Shallow ones VS deep neural network
